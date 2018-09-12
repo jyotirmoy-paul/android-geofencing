@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Helper App</string>
+    <string name="success_status">Service Started Successfully!</string>
+    <string name="stop_status">Service Stopped!</string>
+    <string name="description">Automatically make your phone go Silent while in Campus!</string>
+</resources>
