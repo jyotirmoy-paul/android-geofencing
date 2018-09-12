@@ -19,11 +19,11 @@ Import the project to android studio, build the project, and finally deploy it i
 ## Geofence Detection
 The following code snippet, explains how the android device locates if the user is in a destined location
 ```
-// this function returns the boolean value, if the present lat and long is present in the
-    // destined region
+    // this function returns the boolean value, if the current lat and long is present in the
+    // desired region
     private boolean isInCampus(Double x,Double y){
         /*
-        * Make an circle, with center (X,Y) i.e (latitude, longitude) and with a radius of 500m (approx)
+        * Make a circle, with center (X,Y) i.e (latitude, longitude) having a radius of 500m (approx)
         * now, if the user is present inside the circle, then satisfying (x,y) on the equation
         * of the circle will give a negative value
         * based on this, it is judged, if the user is in the geo-fence or not
