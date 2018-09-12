@@ -139,7 +139,7 @@ public class BackgroundService extends Service implements GoogleApiClient.Connec
     private boolean isInCampus(Double x,Double y){
 
         /*
-        * Make an circle, with center (X,Y) i.e (latitude, longitude) and with a radius of 500 m
+        * Make an circle, with center (X,Y) i.e (latitude, longitude) and with a radius of 690m
         * now, if the user is present inside the circle, then satisfying (x,y) on the equation
         * of the circle will give a negative value
         * based on this, it is judged, if the user is in the geo-fence or not
@@ -149,9 +149,9 @@ public class BackgroundService extends Service implements GoogleApiClient.Connec
         final Double X = 22.9611869;
         final Double Y = 88.4333625;
 
-        // lat and long of a nearby place at dist of 500m (approx)
-        final Double X_01 = 22.9609241;
-        final Double Y_01 = 88.4330608;
+        // lat and long of a nearby place at dist of 690m (approx)
+        final Double X_01 = 22.96;
+        final Double Y_01 = 88.44;
 
         // finding the radius by finding the distance between the two points
         Double radius = Math.sqrt( Math.pow(X - X_01,2) + Math.pow(Y - Y_01,2));
