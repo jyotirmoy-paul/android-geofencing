@@ -8,9 +8,9 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software
 
 ```
-Android Studio should be set-up and running on your system.
-Google Play Services SDK should be installed
-An android device running on Jelly Bean or higher.
+1. Android Studio should be set-up and running on your system.
+2. Google Play Services SDK should be installed.
+3. An android device running on Jelly Bean or higher.
 ```
 
 ### Installing
