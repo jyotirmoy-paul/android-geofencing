@@ -34,6 +34,7 @@ public class BackgroundService extends Service implements GoogleApiClient.Connec
     LocationRequest mLocationRequest;
     AudioManager audioManager;
     private boolean gotOutOfCampusForFirstTime = false;
+    final double radiusToCheck = 100.0; // in meter
 
 
     @Override
@@ -135,36 +136,38 @@ public class BackgroundService extends Service implements GoogleApiClient.Connec
         };
     }
 
-    // locationInsideZone is defined here
-    private boolean isInCampus(Double x,Double y){
+    // the following two function checks if the current location is in geo-fence area
 
-        /*
-        * Make an circle, with center (X,Y) i.e (latitude, longitude) and with a radius of 690m
-        * now, if the user is present inside the circle, then satisfying (x,y) on the equation
-        * of the circle will give a negative value
-        * based on this, it is judged, if the user is in the geo-fence or not
-        * */
+    // function to find distance between two latitude and longitude
+    public static double getDistance(double lat1, double lon1, double lat2, double lon2) {
+        final int R = 6371; // Radius of the earth
+
+        double latDistance = Math.toRadians(Math.abs(lat2 - lat1));
+        double lonDistance = Math.toRadians(Math.abs(lon2 - lon1));
+
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        double distance = R * c * 1000; // distance in meter
+
+        distance = Math.pow(distance, 2);
+        return Math.sqrt(distance);
+    }
+
+    private boolean isInCampus(double x,double y){
 
         // the lat and long of : Webel-It Park
-        final Double X = 22.9611869;
-        final Double Y = 88.4333625;
+        final double X = 22.9611167;
+        final double Y = 88.4335215;
 
-        // lat and long of a nearby place at dist of 690m (approx)
-        final Double X_01 = 22.96;
-        final Double Y_01 = 88.44;
-
-        // finding the radius by finding the distance between the two points
-        Double radius = Math.sqrt( Math.pow(X - X_01,2) + Math.pow(Y - Y_01,2));
-
-        // making the circle equation and satisfying the (x,y) point
-        Double function = Math.pow(x - X,2) + Math.pow(y - Y,2) - Math.pow(radius,2);
-
-        if(function <= 0){
-            // the location is in campus
+        // radius up to 200 m is checked
+        if(getDistance(X,Y,x,y) <= radiusToCheck){
             return true;
         }
         else{
-            // outside campus
             return false;
         }
     }
