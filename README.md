@@ -41,7 +41,7 @@ The following code snippet, explains how the android device locates if the user 
     
     private boolean isInCampus(double x,double y){
 
-        // the lat and long of : Webel-It Park
+        // the lat and long of : Webel-IT Park
         final double X = 22.9611167;
         final double Y = 88.4335215;
         
