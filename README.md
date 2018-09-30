@@ -54,8 +54,11 @@ The following code snippet, explains how the android device locates if the user 
             return false;
         }
     }
-
 ```
+## Debugging and Testing
+* The phone often does not goes into silent mode on entering the geofence.
+* The app service does not automatically restarts after a reboot.
+* There might be bug with the distance measurement algorithm.
 ## Build With
 * [Google Api Client](https://developers.google.com/android/reference/com/google/android/gms/common/api/GoogleApiClient)
 * [Fused Location Provider Client](https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderClient)
